@@ -192,3 +192,23 @@ At the end of the project, the team should have:
 Everyone is responsible for completing, testing, committing, and submitting their own contribution.
 
 The `main` branch must contain only reviewed and approved contributions.
+
+
+##Latest Team Members:
+LIST OF PROJECT CONTRIBUTOR  AND THEIR GITHUB ID  
+1. MEMBER 1: folorunsoaugt648-stack
+2. MEMBER 2 :         GHOSTX101
+3. MEMBER 3 : Abdulazeez966
+4. MEMBER 4 : Emmanuel2002Obilor
+5. MEMBER 5
+6. MEMBER 6 : bwealth71-blip
+7. MEMBER 7
+8. MEMBER 8 : IsholaMatthew11
+9. MEMBER 9: tomisinoloruntoba42-rgb
+10. MEMBER 10
+11. MEMBER 11
+12. MEMBER 12
+13. MEMBER 13 : Gan-00
+14. MEMBER 14
+15. MEMBER 15
+16. MEMBER 16.
