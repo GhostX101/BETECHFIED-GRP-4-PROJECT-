@@ -36,4 +36,22 @@ router.post('/', (req, res) => {
 
 });
 
+// DELETE /api/notes/:id
+router.delete('/:id', (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const index = data.notes.findIndex((note) => note.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({
+            message: 'Note not found'
+        });
+    }
+
+    const [deletedNote] = data.notes.splice(index, 1);
+    return res.status(200).json({
+        message: 'Note deleted',
+        note: deletedNote
+    });
+});
+
 module.exports = router;
