@@ -200,7 +200,7 @@ LIST OF PROJECT CONTRIBUTOR  AND THEIR GITHUB ID
 2. MEMBER 2 :         GHOSTX101
 3. MEMBER 3 : Abdulazeez966
 4. MEMBER 4 : Emmanuel2002Obilor
-5. MEMBER 5
+5. MEMBER 5  :emmanu-byte
 6. MEMBER 6 : bwealth71-blip
 7. MEMBER 7
 8. MEMBER 8 : IsholaMatthew11
