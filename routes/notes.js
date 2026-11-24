@@ -1,33 +1,80 @@
 const express = require('express');
 const router = express.Router();
+const data = require('../data/notes');
+const {
+  validatenotedata,
+  validatedateID,
+  checkNoteExixts
+} = require('../middleware/validation');
 
-let notes = [
-    { id: 1, title: "first note", content: "this is my first note"},
-    { id: 2, title: "second note", content: "this is my second note"},
-    { id: 3, title: "third note", content: "this is my third note"},
-];
-    router.put('/:id', (req, res) => {
-        const id = parseInt(req.params.id);
-        const { title, content } = req.body;
+// Member 4: POST /api/notes - Create a new note
+router.post('/', validatenotedata, (req, res) => {
+  const { title, content } = req.body;
 
-        if (isNaN(id)) {
-            return res.status(400).json({ success: false, message: 'Invalid ID format. ID must be a number.' });
-        }
+  const newNote = {
+    id: data.nextId++,
+    title: title.trim(),
+    content: content.trim(),
+    createdAt: new Date().toISOString()
+  };
 
-        if (!title || !content) {
-            return res.status(400).json({ success: false, message: "Title and content are required" });
-        }
+  data.notes.push(newNote);
 
-        const note = notes.find((n) => n.id === id);
+  res.status(201).json({
+    success: true,
+    message: 'Note created successfully',
+    data: newNote
+  });
+});
 
-        if (!note) {
-            return res.status(404).json({ success: false, message: "Note not found" });
-        }
+// Member 5: GET /api/notes - Read all notes
+router.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    count: data.notes.length,
+    data: data.notes
+  });
+});
 
-        note.title = title;
-        note.content = content;     
+// Member 6: GET /api/notes/:id - Read a single note
+router.get('/:id', validatedateID, checkNoteExixts(data.notes), (req, res) => {
+  res.status(200).json({
+    success: true,
+    data: req.note
+  });
+});
 
-        res.json({ success: true, message: "Note updated successfully", data: note });
+// Member 7: PUT /api/notes/:id - Update an existing note
+router.put(
+  '/:id',
+  validatedateID,
+  checkNoteExixts(data.notes),
+  validatenotedata,
+  (req, res) => {
+    const { title, content } = req.body;
+
+    req.note.title = title.trim();
+    req.note.content = content.trim();
+    req.note.updatedAt = new Date().toISOString();
+
+    res.status(200).json({
+      success: true,
+      message: 'Note updated successfully',
+      data: req.note
     });
+  }
+);
+
+// Member 8: DELETE /api/notes/:id - Delete a note
+router.delete('/:id', validatedateID, checkNoteExixts(data.notes), (req, res) => {
+  const index = data.notes.findIndex((n) => n.id === req.noteid);
+  const deletedNote = data.notes.splice(index, 1)[0];
+
+  res.status(200).json({
+    success: true,
+    message: 'Note deleted successfully',
+    data: deletedNote
+  });
+});
 
 module.exports = router;

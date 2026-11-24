@@ -1,0 +1,67 @@
+{
+  "info": {
+    "name": "BeTechified Group 4 - Note Taking API",
+    "description": "Complete CRUD collection for the Note Taking REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/health"
+      }
+    },
+    {
+      "name": "Create Note",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Sprint Planning\",\n  \"content\": \"Finalize API documentation and demo video\"\n}"
+        },
+        "url": "{{baseUrl}}/api/notes"
+      }
+    },
+    {
+      "name": "Get All Notes",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/notes"
+      }
+    },
+    {
+      "name": "Get Single Note",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/notes/1"
+      }
+    },
+    {
+      "name": "Update Note",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Sprint Planning\",\n  \"content\": \"All CRUD endpoints tested and verified\"\n}"
+        },
+        "url": "{{baseUrl}}/api/notes/1"
+      }
+    },
+    {
+      "name": "Delete Note",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/notes/1"
+      }
+    }
+  ]
+}
